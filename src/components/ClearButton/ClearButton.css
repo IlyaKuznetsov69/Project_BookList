@@ -1,0 +1,26 @@
+.clearCompleted {
+	position: relative;
+	height: 24px;
+	top: -6px;
+	text-decoration: none;
+	cursor: pointer;
+	color: inherit;
+	margin: 3px 0;
+	padding: 3px 7px;
+	border: 1px solid transparent;
+	border-radius: 3px;
+}
+
+.clearCompleted:hover {
+	border-color: rgba(175, 47, 47, 0.5);
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.clearCompleted:active {
+	border-color: rgba(175, 47, 47, 0.9);
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.clearCompleted.hidden {
+	display: none;
+}

@@ -1,0 +1,66 @@
+$textShadowColor: #333333;
+$backgroundColor: rgba(169, 1, 175, 0.5);
+
+.search {
+  display: flex;
+  justify-content: flex-end; 
+  position: relative;
+  width: 50%;
+  height: 100%;
+}
+
+.searchInput {
+  display: block;
+  position: relative;
+  top: -3px;
+  width: 75%;
+  height: 110%;
+  border: 1px solid rgba(175, 47, 47, 0.9);
+  border-radius: 3px;
+  outline: none;
+  padding-left: 10px;
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.searchButton {
+  font-size: 12px;
+	font-family: inherit;
+	font-weight: inherit;
+  line-height: 1.4em;
+  font-style: italic;
+  display: block;
+  position: relative;
+  top: -3px;
+  right: -14px;
+  width: 16%;
+  height: 135%;
+  border: 1px solid #253737;
+  background: $backgroundColor;
+  background: linear-gradient(to bottom, rgba(29, 0, 31, 0.5), $backgroundColor);
+  margin: 0 5px;
+  padding: 5px;
+  border-radius: 12px;
+  box-shadow: rgba(255,255,255,0.1) 0 1px 0, inset rgba(255,255,255,0.7) 0 1px 0;
+  text-shadow: $textShadowColor 0 1px 0;
+  color: #e1e1e1;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.searchButton:hover {
+  border: 1px solid #253737;
+  text-shadow: $textShadowColor 0 1px 0;
+  background: $backgroundColor;
+  background: linear-gradient(to bottom, rgba(129, 8, 138, 0.5), $backgroundColor);
+  color: #fff;
+}
+
+.searchButton:active {
+  text-shadow: $textShadowColor 0 -1px 0;
+  border: 1px solid $textShadowColor;
+  background: #ffCC00;
+  background: linear-gradient(to bottom, #ffcc00, #ff6600);
+  color: #fff;
+  box-shadow: rgba(255,255,255,0) 0 1px 0, inset rgba(255,255,255,0.7) 0 1px 0;
+  outline: none;
+}

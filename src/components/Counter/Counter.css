@@ -1,0 +1,8 @@
+.bookCount {
+	text-align: left;
+	width: 115px;
+}
+
+.bookCount strong {
+	font-weight: 300;
+}
