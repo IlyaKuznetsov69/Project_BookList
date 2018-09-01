@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import styles from './Filter.css';
 
-const Filter = ({ href, text, selected, setIt }) => {
+const Filter = ({ text, selected, setIt }) => {
 
   const selectedFilter = (selected) => {
     if (selected) {
@@ -14,13 +14,13 @@ const Filter = ({ href, text, selected, setIt }) => {
 
   return (
     <li className={styles.container}>
-      <a
-        href={href}
+      <button
+        type="button"
         className={classNames(styles.filter, selectedFilter(selected))}
         onClick={setIt}
       >
         {text}
-      </a>
+      </button>
     </li>
   )
 }
@@ -28,7 +28,6 @@ const Filter = ({ href, text, selected, setIt }) => {
 export default Filter;
 
 Filter.propTypes = {
-  href: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   selected: PropTypes.bool.isRequired,
   setIt: PropTypes.func.isRequired

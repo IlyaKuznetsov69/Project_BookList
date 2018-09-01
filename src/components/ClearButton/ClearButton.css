@@ -1,7 +1,7 @@
 .clearCompleted {
 	position: relative;
 	height: 24px;
-	top: -6px;
+	/* top: -6px; */
 	text-decoration: none;
 	cursor: pointer;
 	color: inherit;

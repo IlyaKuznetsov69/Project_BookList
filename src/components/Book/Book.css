@@ -54,6 +54,7 @@
 	color: #cc9a9a;
 	margin-bottom: 5px;
 	transition: color 0.2s ease-out;
+	cursor: pointer;
 }
 
 .destroy:hover {
@@ -66,6 +67,29 @@
 
 .book:hover .destroy {
 	display: block;
+}
+
+.link {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: 50px;
+	bottom: 0;
+	width: 30px;
+	height: 30px;
+	margin: auto 0;
+	transition: all 0.2s ease-out;
+	background-image: url(components/Book/zoom.png);
+	background-size: cover;
+}
+
+.book:hover .link {
+	display: block;
+}
+
+.link:hover {
+	width: 38px;
+	height: 38px;
 }
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {

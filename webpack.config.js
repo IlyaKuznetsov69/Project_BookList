@@ -1,18 +1,19 @@
 const path = require('path');
-// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const autoprefixer = require('autoprefixer');
 
 module.exports = {
   entry: ['babel-polyfill', './src/index.js'],
   output: {
     filename: 'build.js',
-    path: path.resolve(__dirname, './public'),
+    path: path.resolve(__dirname, '/public'),
   },
   mode: 'development',
   // devtool: 'source-map',
   devServer: {
-    publicPath: 'http://localhost:8080/public/',
+    publicPath: '/public/',
     openPage: 'public',
+    historyApiFallback: true,
     port: 8080
   },
   resolve: {
@@ -46,8 +47,8 @@ module.exports = {
       {
         test: /\.(css|scss|sass)$/,
         use: [
-          'style-loader',
-          // MiniCssExtractPlugin.loader,
+          // 'style-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -89,21 +90,21 @@ module.exports = {
       }
     ]
   },
-  // optimization: {
-  //   splitChunks: {
-  //     cacheGroups: {
-  //       styles: {
-  //         name: 'main',
-  //         test: /\.css$/,
-  //         chunks: 'all',
-  //         enforce: true
-  //       }
-  //     }
-  //   }
-  // },
-  // plugins: [
-  //   new MiniCssExtractPlugin({
-  //     filename: "[name].css",
-  //   })
-  // ]
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        styles: {
+          name: 'main',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true
+        }
+      }
+    }
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+    })
+  ]
 }

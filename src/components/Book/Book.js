@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import BookField from 'components/BookField/BookField';
 import styles from './Book.css';
@@ -58,6 +59,12 @@ const Book = ({
         editBook={editBook}
         changeBookView={changeBookView}
       />
+      <Link to={`/public/${id}`}>
+        <div
+          className={styles.link}
+          title="Посмотреть описание книги"
+        />
+      </Link>
       <button
         type="button"
         className={styles.destroy}

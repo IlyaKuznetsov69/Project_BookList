@@ -18,17 +18,14 @@ const Footer = () => {
         <ul className={styles.filters}>
           <FilterContainer
             ownFilter={SHOW_ALL}
-            href="#/"
             text="Всего"
           />
           <FilterContainer
             ownFilter={SHOW_ACTIVE}
-            href="#/active"
             text="Осталось"
           />
           <FilterContainer
             ownFilter={SHOW_COMPLETED}
-            href="#/completed"
             text="Прочитано"
           />
         </ul>

@@ -26,6 +26,7 @@
 	display: flex;
 	position: relative;
 	width: 50%;
+	align-items: center;
 }
 
 .filters {
@@ -42,6 +43,6 @@
 	}
 
 	.filters {
-		bottom: 10px;
+		bottom: 5px;
 	}
 }

@@ -5,13 +5,12 @@ import PropTypes from 'prop-types';
 import { setFilter } from 'actions/actions';
 import Filter from 'components/Filter/Filter';
 
-const FilterContainer = ({ selected, setIt, href, text }) => {
+const FilterContainer = ({ selected, setIt, text }) => {
 
   return (
     <Filter
       selected={selected}
       setIt={setIt}
-      href={href}
       text={text}
     />
   )
@@ -32,7 +31,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 export default connect(mapStateToProps, mapDispatchToProps)(FilterContainer);
 
 FilterContainer.propTypes = {
-  href: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   selected: PropTypes.bool.isRequired,
   setIt: PropTypes.func.isRequired
