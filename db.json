@@ -1,0 +1,68 @@
+{
+  "books": [
+    {
+      "id": "1535199829604",
+      "title": {
+        "text": "1",
+        "isEditing": false
+      },
+      "author": {
+        "text": "1",
+        "isEditing": false
+      },
+      "year": {
+        "text": "1",
+        "isEditing": false
+      },
+      "size": {
+        "text": "1",
+        "isEditing": false
+      },
+      "completed": false
+    },
+    {
+      "id": "1535199880174",
+      "title": {
+        "text": "3",
+        "isEditing": false
+      },
+      "author": {
+        "text": "3",
+        "isEditing": false
+      },
+      "year": {
+        "text": "3",
+        "isEditing": false
+      },
+      "size": {
+        "text": "3",
+        "isEditing": false
+      },
+      "completed": true
+    },
+    {
+      "id": "1535745853751",
+      "title": {
+        "text": "5",
+        "isEditing": false
+      },
+      "author": {
+        "text": "5",
+        "isEditing": false
+      },
+      "year": {
+        "text": "5",
+        "isEditing": false
+      },
+      "size": {
+        "text": "5",
+        "isEditing": false
+      },
+      "completed": false
+    }
+  ],
+  "filters": {
+    "selectedFilter": "SHOW_ALL",
+    "searchValue": ""
+  }
+}
