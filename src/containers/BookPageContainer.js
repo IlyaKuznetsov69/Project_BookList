@@ -3,21 +3,13 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import BookPage from 'components/BookPage/BookPage';
-import { refreshBookList, setFilter, sendSearchValue } from 'actions/actions';
-import { fetchBooksRequest, fetchFiltersRequest } from 'api/api';
+import { preloadData } from 'actions/actions';
 
 class BookPageContainer extends Component {
 
   componentDidMount() {
-    const { dispatch } = this.props;    
-    const preLoad = async (dispatch) => {
-      const books = await fetchBooksRequest();
-      const filters = await fetchFiltersRequest();
-      dispatch(refreshBookList(books));
-      dispatch(setFilter(filters.selectedFilter));
-      dispatch(sendSearchValue(filters.searchValue));
-    };
-    return preLoad(dispatch);
+    const { preloadData } = this.props;
+    preloadData();
   }
 
   render() {
@@ -37,7 +29,11 @@ const mapStateToProps = ({ books }) => ({
   books: books
 })
 
-export default connect(mapStateToProps)(BookPageContainer);
+const mapDispatchToProps = (dispatch) => ({
+  preloadData: () => dispatch(preloadData())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(BookPageContainer);
 
 BookPageContainer.propTypes = {
   books: PropTypes.arrayOf(PropTypes.shape({
@@ -65,5 +61,5 @@ BookPageContainer.propTypes = {
       id: PropTypes.string.isRequired
     }).isRequired
   }).isRequired,
-  dispatch: PropTypes.func.isRequired
+  preloadData: PropTypes.func.isRequired
 }

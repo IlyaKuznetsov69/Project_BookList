@@ -1,5 +1,4 @@
-$textShadowColor: #333333;
-$backgroundColor: rgba(169, 1, 175, 0.5);
+@import 'colors';
 
 .search {
   display: flex;
@@ -7,60 +6,110 @@ $backgroundColor: rgba(169, 1, 175, 0.5);
   position: relative;
   width: 50%;
   height: 100%;
+
+  .searchInput {
+    display: block;
+    position: relative;
+    top: -3px;
+    width: 75%;
+    height: 110%;
+    border: 1px solid $clearActiveBorderColor;
+    border-radius: 3px;
+    outline: none;
+    padding-left: 10px;
+    box-shadow: inset 1px 1px 3px $clearHoverShadowColor;
+  }
+  
+  .searchButton {
+    font-size: 12px;
+    font-family: inherit;
+    font-weight: inherit;
+    line-height: 1.4em;
+    font-style: italic;
+    display: block;
+    position: relative;
+    top: -3px;
+    right: -14px;
+    width: 16%;
+    height: 135%;
+    border: 1px solid $buttonBorderColor;
+    background: $buttonBackgroundColor2;
+    background: linear-gradient(to bottom, $buttonBackgroundColor1, $buttonBackgroundColor2);
+    margin: 0 5px;
+    padding: 0;
+    border-radius: 12px;
+    box-shadow: $buttonShadowColor1 0 1px 0, inset $buttonShadowColor2 0 1px 0;
+    text-shadow: $buttonTextShadowColor 0 1px 0;
+    color: $buttonTextColor;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  
+  .searchButton:hover {
+    border: 1px solid $buttonBorderColor;
+    text-shadow: $buttonTextShadowColor 0 1px 0;
+    background: $buttonBackgroundColor2;
+    background: linear-gradient(to bottom, $buttonHoverBackgroundColor1, $buttonBackgroundColor2);
+    color: $buttonActiveTextColor;
+  }
+  
+  .searchButton:active {
+    text-shadow: $buttonTextShadowColor 0 -1px 0;
+    border: 1px solid $buttonTextShadowColor;
+    background: $buttonActiveBackgroundColor1;
+    background: linear-gradient(to bottom, $buttonActiveBackgroundColor1, $buttonActiveBackgroundColor2);
+    color: $buttonActiveTextColor;
+    box-shadow: $buttonActiveShadowColor1 0 1px 0, inset $buttonShadowColor2 0 1px 0;
+    outline: none;
+  }
+
+  @media (min-width: 915px) and (max-width: 1050px) {
+
+    .searchButton {
+      font-size: 11px;
+    }
+  }
 }
 
-.searchInput {
-  display: block;
-  position: relative;
-  top: -3px;
-  width: 75%;
-  height: 110%;
-  border: 1px solid rgba(175, 47, 47, 0.9);
-  border-radius: 3px;
-  outline: none;
-  padding-left: 10px;
-  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.5);
+@media (min-width: 445px) and (max-width: 914px) {
+
+  .search {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  
+    .searchInput {
+      height: 20px;
+      width: 40%;
+    }
+    
+    .searchButton {
+      font-size: 11px;
+      height: 25px;
+      width: auto;
+      padding: 3px 5px;
+    }
+  }
 }
 
-.searchButton {
-  font-size: 12px;
-	font-family: inherit;
-	font-weight: inherit;
-  line-height: 1.4em;
-  font-style: italic;
-  display: block;
-  position: relative;
-  top: -3px;
-  right: -14px;
-  width: 16%;
-  height: 135%;
-  border: 1px solid #253737;
-  background: $backgroundColor;
-  background: linear-gradient(to bottom, rgba(29, 0, 31, 0.5), $backgroundColor);
-  margin: 0 5px;
-  padding: 5px;
-  border-radius: 12px;
-  box-shadow: rgba(255,255,255,0.1) 0 1px 0, inset rgba(255,255,255,0.7) 0 1px 0;
-  text-shadow: $textShadowColor 0 1px 0;
-  color: #e1e1e1;
-  cursor: pointer;
-  overflow: hidden;
-}
+@media (max-width: 444px) {
 
-.searchButton:hover {
-  border: 1px solid #253737;
-  text-shadow: $textShadowColor 0 1px 0;
-  background: $backgroundColor;
-  background: linear-gradient(to bottom, rgba(129, 8, 138, 0.5), $backgroundColor);
-  color: #fff;
-}
-
-.searchButton:active {
-  text-shadow: $textShadowColor 0 -1px 0;
-  border: 1px solid $textShadowColor;
-  background: #ffCC00;
-  background: linear-gradient(to bottom, #ffcc00, #ff6600);
-  color: #fff;
-  box-shadow: rgba(255,255,255,0) 0 1px 0, inset rgba(255,255,255,0.7) 0 1px 0;
-  outline: none;
+  .search {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  
+    .searchInput {
+      height: 20px;
+      width: 30%;
+    }
+    
+    .searchButton {
+      font-size: 11px;
+      height: 25px;
+      width: auto;
+      padding: 3px 5px;
+      margin: 0 2px;
+    }
+  }
 }

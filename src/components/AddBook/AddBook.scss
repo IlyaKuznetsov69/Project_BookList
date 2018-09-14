@@ -1,72 +1,94 @@
-$textShadowColor: #333333;
-$backgroundColor: rgba(169, 1, 175, 0.5);
+@import 'colors';
 
 .newBook {
 	display: flex;
 	position: relative;
-	width: 100%;
-}
+  width: 100%;
+  box-shadow: inset 0 -2px 0px $bookShadowColor;
 
-.newField {
-	display: block;
-	position: relative;
-	margin: 0;
-	width: 22%;
-	font-size: 16px;
-	font-family: inherit;
-	font-weight: inherit;
-	line-height: 1.4em;
-	outline: none;
-	color: inherit;
-	padding: 10px;
-	border: none;
-	background: rgba(0, 0, 0, 0.003);
-	box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
-	box-sizing: border-box;
-}
+  .newField {
+    display: block;
+    position: relative;
+    left: 50px;
+    margin: 0;
+    width: 21%;
+    font-size: 16px;
+    font-family: inherit;
+    font-weight: inherit;
+    line-height: 1.4em;
+    outline: none;
+    color: inherit;
+    padding: 10px;
+    border: none;
+    background: $bookBackgroundColor;
+    box-shadow: inset 0 -2px 0px $bookShadowColor;
+    box-sizing: border-box;
+  }
+  
+  .addButton {
+    font-size: 12px;
+    font-family: inherit;
+    font-weight: inherit;
+    line-height: 1.4em;
+    font-style: italic;
+    display: block;
+    position: absolute;
+    top: 7px;
+    right: 0;
+    width: 8%;
+    height: 70%;
+    border: 1px solid $buttonBorderColor;
+    background: $buttonBackgroundColor2;
+    background: linear-gradient(to bottom, $buttonBackgroundColor1, $buttonBackgroundColor2);
+    margin: 0 5px;
+    padding: 5px;
+    border-radius: 12px;
+    box-shadow: $buttonShadowColor1 0 1px 0, inset $buttonShadowColor2 0 1px 0;
+    text-shadow: $buttonTextShadowColor 0 1px 0;
+    color: $buttonTextColor;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  
+  .addButton:hover {
+    border: 1px solid $buttonBorderColor;
+    text-shadow: $buttonTextShadowColor 0 1px 0;
+    background: $buttonBackgroundColor2;
+    background: linear-gradient(to bottom, $buttonHoverBackgroundColor1, $buttonBackgroundColor2);
+    color: $buttonActiveTextColor;
+  }
+  
+  .addButton:active {
+    text-shadow: $buttonTextShadowColor 0 -1px 0;
+    border: 1px solid $buttonTextShadowColor;
+    background: $buttonActiveBackgroundColor1;
+    background: linear-gradient(to bottom, $buttonActiveBackgroundColor1, $buttonActiveBackgroundColor2);
+    color: $buttonActiveTextColor;
+    box-shadow: $buttonActiveShadowColor1 0 1px 0, inset $buttonShadowColor2 0 1px 0;
+    outline: none;
+  }
 
-.newField:first-child {
-	margin-left: 50px;
-}
+  @media (min-width: 765px) and (max-width: 914px) {
 
-.addButton {
-  font-size: 12px;
-	font-family: inherit;
-	font-weight: inherit;
-  line-height: 1.4em;
-  font-style: italic;
-  display: block;
-  position: relative;
-  top: 7px;
-  width: 8%;
-  height: 70%;
-  border: 1px solid #253737;
-  background: $backgroundColor;
-  background: linear-gradient(to bottom, rgba(29, 0, 31, 0.5), $backgroundColor);
-  margin: 0 5px;
-  padding: 5px;
-  border-radius: 12px;
-  box-shadow: rgba(255,255,255,0.1) 0 1px 0, inset rgba(255,255,255,0.7) 0 1px 0;
-  text-shadow: $textShadowColor 0 1px 0;
-  color: #e1e1e1;
-  cursor: pointer;
-  overflow: hidden;
-}
-
-.addButton:hover {
-  border: 1px solid #253737;
-  text-shadow: $textShadowColor 0 1px 0;
-  background: $backgroundColor;
-  background: linear-gradient(to bottom, rgba(129, 8, 138, 0.5), $backgroundColor);
-  color: #fff;
-}
-
-.addButton:active {
-  text-shadow: $textShadowColor 0 -1px 0;
-  border: 1px solid $textShadowColor;
-  background: #ffCC00;
-  background: linear-gradient(to bottom, #ffcc00, #ff6600);
-  color: #fff;
-  box-shadow: rgba(255,255,255,0) 0 1px 0, inset rgba(255,255,255,0.7) 0 1px 0;
-  outline: none;
+    .newField {
+      font-size: 14px;
+    }
+  
+    .addButton {
+      font-size: 10px;
+    }
+  }
+  
+  @media (max-width: 764px) {
+  
+    .newField {
+      width: 19%;
+      font-size: 12px;
+    }
+  
+    .addButton {
+      font-size: 10px;
+      width: 12%;
+    }
+  }
 }

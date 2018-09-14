@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import CSSModules from 'react-css-modules';
 
 import styles from './AddBook.scss';
 
@@ -18,23 +19,57 @@ class AddBook extends Component {
     this.addFieldText = this.addFieldText.bind(this);
     this.addFieldTextConfirm = this.addFieldTextConfirm.bind(this);
     this.onAddBook = this.onAddBook.bind(this);
+    this.verifyData = this.verifyData.bind(this);
   }
 
   onAddBook(event) {
     event.preventDefault();
     const { inputData } = this.state;
     const { addBook } = this.props;
+    const validationResult = this.verifyData(inputData);
     const id = Date.now().toString();
-    addBook({ ...inputData, id: id });
-    this.setState({
-      inputData: {
-        title: '',
-        author: '',
-        year: '',
-        size: ''
-      }
-    });
-    event.currentTarget.reset();
+    if (validationResult === 4) {
+      addBook({ ...inputData, id: id });
+      this.setState({
+        inputData: {
+          title: '',
+          author: '',
+          year: '',
+          size: ''
+        }
+      });
+      event.currentTarget.reset();
+    }
+  }
+
+  verifyData(data) {
+    let result = 0;
+    let message = '';
+    const date = new Date().getFullYear();
+    if (data.title !== '') {
+      result += 1;
+    } else {
+      message += 'Заполните поле "название книги"\r';
+    }
+    if (data.author !== '') {
+      result += 1;
+    } else {
+      message += 'Заполните поле "автор книги"\r';
+    }
+    if (data.year.match(/^\s*\d+\s*$/) && (+data.year > 0) && (+data.year <= date)) {
+      result += 1;
+    } else {
+      message += `Заполните год издания книги без лишних символов\r(от 1 до ${date})\r`;
+    }
+    if (data.size.match(/^\s*\d+\s*$/) && (+data.size > 0) && (+data.size < 10000)) {
+      result += 1;
+    } else {
+      message += "Заполните количество страниц книги без лишних символов\r(от 1 до 9999)";
+    }
+    if (message !== '') {
+      alert(message);
+    }
+    return result;
   }
 
   addFieldText(event) {
@@ -61,7 +96,7 @@ class AddBook extends Component {
       <form
         action="#"
         autoComplete="off"
-        className={styles.newBook}
+        styleName='newBook'
         onSubmit={this.onAddBook}
       >
         <input
@@ -70,10 +105,9 @@ class AddBook extends Component {
           name="title"
           type="text"
           title="Введите название книги"
-          className={styles.newField}
+          styleName='newField'
           placeholder="Название книги"
           defaultValue={inputData.title}
-          required
         />
         <input
           onBlur={this.addFieldText}
@@ -81,10 +115,9 @@ class AddBook extends Component {
           name="author"
           type="text"
           title="Введите автора книги"
-          className={styles.newField}
+          styleName='newField'
           placeholder="Автор"
           defaultValue={inputData.author}
-          required
         />
         <input
           onBlur={this.addFieldText}
@@ -92,10 +125,9 @@ class AddBook extends Component {
           name="year"
           type="text"
           title="Введите год написания книги"
-          className={styles.newField}
+          styleName='newField'
           placeholder="Год издания"
           defaultValue={inputData.year}
-          required
         />
         <input
           onBlur={this.addFieldText}
@@ -103,14 +135,13 @@ class AddBook extends Component {
           name="size"
           type="text"
           title="Введите количество страниц"
-          className={styles.newField}
+          styleName='newField'
           placeholder="Количество страниц"
           defaultValue={inputData.size}
-          required
         />
         <button
           type="submit"
-          className={styles.addButton}
+          styleName='addButton'
           title="Нажмите, когда заполнили все поля"
         >
           Добавить
@@ -120,7 +151,7 @@ class AddBook extends Component {
   }
 }
 
-export default AddBook;
+export default CSSModules(AddBook, styles);
 
 AddBook.propTypes = {
   addBook: PropTypes.func.isRequired

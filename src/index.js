@@ -28,8 +28,8 @@ render(
     <ConnectedRouter history={history}>
       <div>
         <Switch>
-          <Route exact path="/public/" component={App} />
-          <Route path="/public/:id" component={BookPageContainer} />
+          <Route exact path="/" component={App} />
+          <Route path="/:id" component={BookPageContainer} />
         </Switch>
       </div>
     </ConnectedRouter>

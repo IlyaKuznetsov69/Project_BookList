@@ -1,0 +1,49 @@
+@import 'colors';
+
+.bookField {
+	display: block;
+	position: relative;
+	font-size: 16px;
+	border-bottom: 1px solid $backBorderColor;
+	background-color: $bookBackgroundColor;
+	backface-visibility: hidden;
+	overflow: hidden;
+	height: auto;
+	width: 22%;
+	box-sizing: border-box;
+	transition: transform 0.6s ease-in-out;
+
+	.view {
+		display: block;
+		height: 100%;
+	
+	  .lab {
+			white-space: pre-line;
+			word-break: break-all;
+			padding: 10px;
+			margin: 0;
+			display: block;
+			line-height: 1.2;
+			height: 100%;
+			transition: color 0.6s;
+		}
+	}
+}
+
+.completed {
+	transform: rotateX(360deg);
+
+	.lab {
+		color: $bookFieldTextColor;
+		text-decoration: line-through;
+	}
+}
+
+.editing {
+	border-bottom: none;
+	padding: 0;
+
+	.view {
+		display: none;
+	}
+}

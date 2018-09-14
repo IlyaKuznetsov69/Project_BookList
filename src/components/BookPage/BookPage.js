@@ -23,7 +23,7 @@ const BookPage = ({
         <div className={styles.description}>Количество страниц: {size.text}</div>
         <div className={styles.description}>{completed ? "Прочитана" : "Пока не прочитана"}</div>
         <Link
-          to="/public"
+          to="/"
           className={styles.link}
         >
           <button
@@ -41,22 +41,43 @@ const BookPage = ({
 export default BookPage;
 
 BookPage.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   title: PropTypes.shape({
-    text: PropTypes.string.isRequired,
-    isEditing: PropTypes.bool.isRequired
-  }).isRequired,
+    text: PropTypes.string,
+    isEditing: PropTypes.bool
+  }),
   author: PropTypes.shape({
-    text: PropTypes.string.isRequired,
-    isEditing: PropTypes.bool.isRequired
-  }).isRequired,
+    text: PropTypes.string,
+    isEditing: PropTypes.bool
+  }),
   year: PropTypes.shape({
-    text: PropTypes.string.isRequired,
-    isEditing: PropTypes.bool.isRequired
-  }).isRequired,
+    text: PropTypes.string,
+    isEditing: PropTypes.bool
+  }),
   size: PropTypes.shape({
-    text: PropTypes.string.isRequired,
-    isEditing: PropTypes.bool.isRequired
-  }).isRequired,
-  completed: PropTypes.bool.isRequired
+    text: PropTypes.string,
+    isEditing: PropTypes.bool
+  }),
+  completed: PropTypes.bool
+}
+
+BookPage.defaultProps = {
+  id: "Loading...",
+  title: {
+    text: "Loading...",
+    isEditing: false
+  },
+  author: {
+    text: "Loading...",
+    isEditing: false
+  },
+  year: {
+    text: "Loading...",
+    isEditing: false
+  },
+  size: {
+    text: "Loading...",
+    isEditing: false
+  },
+  completed: false
 }

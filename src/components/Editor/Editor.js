@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import CSSModules from 'react-css-modules';
 
-import styles from './Editor.css';
+import styles from './Editor.scss';
 
 class Editor extends Component {
 
@@ -24,7 +25,7 @@ class Editor extends Component {
         onBlur={this.handleBlur}
         onKeyPress={this.handleKeyPress}
         type="text"
-        className={styles.edit}
+        styleName='edit'
         defaultValue={text}
         autoFocus
       />
@@ -32,7 +33,7 @@ class Editor extends Component {
   }
 }
 
-export default Editor;
+export default CSSModules(Editor, styles);
 
 Editor.propTypes = {
   editBook: PropTypes.func.isRequired,

@@ -1,0 +1,39 @@
+@import 'colors';
+
+.container {
+	display: inline;
+
+	.filter {
+		color: inherit;
+		margin: 3px;
+		padding: 3px 7px;
+		text-decoration: none;
+		border: 1px solid transparent;
+		border-radius: 3px;
+		cursor: pointer;
+	}
+	
+	.filter:hover {
+		border-color: $clearHoverBorderColor;
+		box-shadow: 1px 1px 3px $clearHoverShadowColor;
+	}
+	
+	.selected {
+		border-color: $clearActiveBorderColor;
+		box-shadow: 1px 1px 3px $clearHoverShadowColor;
+	}
+	
+	@media (min-width: 915px) and (max-width: 1050px) {
+	
+		.filter {
+			padding: 3px 3px;
+		}
+	}
+	
+	@media (max-width: 914px) {
+	
+		.filter {
+			padding: 1px 3px;
+		}
+	}
+}

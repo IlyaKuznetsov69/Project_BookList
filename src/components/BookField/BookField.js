@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import CSSModules from 'react-css-modules';
 
 import Editor from 'components/Editor/Editor';
-import styles from './BookField.css';
+import styles from './BookField.scss';
 
 const BookField = ({
   name,
@@ -29,9 +30,9 @@ const BookField = ({
       {data.isEditing &&
         <Editor id={id} field={name} editBook={editBook} text={data.text} />
       }
-      <div className={styles.view}>
+      <div styleName='view'>
         <div
-          className={styles.lab}
+          styleName='lab'
           onDoubleClick={() => changeBookView(id, name)}
         >
           {data.text}
@@ -41,7 +42,7 @@ const BookField = ({
   )
 }
 
-export default BookField;
+export default CSSModules(BookField, styles);
 
 BookField.propTypes = {
   name: PropTypes.string.isRequired,

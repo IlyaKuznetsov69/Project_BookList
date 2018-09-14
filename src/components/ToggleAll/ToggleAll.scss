@@ -1,3 +1,5 @@
+@import 'colors';
+
 .forToggleAll {
 	display: none;
 }
@@ -10,17 +12,18 @@
 	height: 34px;
 	text-align: center;
 	border: none;
+	cursor: pointer;
 }
 
 .toggleAll:before {
 	content: '❯';
 	font-size: 22px;
-	color: #e6e6e6;
+	color: $placeholderTextColor;
 	padding: 10px 27px 10px 27px;
 }
 
 .toggleAll:checked:before {
-	color: #737373;
+	color: $toggleAllTextColor;
 }
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {

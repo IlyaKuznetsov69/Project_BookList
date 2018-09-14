@@ -1,21 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './ClearButton.css';
+import styles from './ClearButton.scss';
 
 const ClearButton = ({ buttonVisible, clearCompleted }) => {
 
   const classes = (state) => {
-    if (state === true) {
+    if (state) {
       return styles.clearCompleted
     } return [styles.clearCompleted, styles.hidden].join(' ');
+  }
+
+  const handleClick = () => {
+    const confirmed = confirm("Вы уверены, что хотите удалить все прочтенные книги?");
+    if (confirmed) {
+      clearCompleted();
+    }
   }
 
   return (
     <button
       type="button"
       className={classes(buttonVisible)}
-      onClick={clearCompleted}
+      onClick={handleClick}
     >
       Удалить прочтенные
     </button>

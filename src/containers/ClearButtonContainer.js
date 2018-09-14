@@ -16,8 +16,8 @@ const ClearButtonContainer = ({ buttonVisible, clearCompleted }) => {
 }
 
 const getButtonState = (items) => {
-  const completedQuantity = (items.filter((item) => item.completed === true)).length
-  return (completedQuantity > 0) ? true : false
+  const completedQuantity = (items.filter(item => item.completed)).length;
+  return completedQuantity > 0
 }
 
 const mapStateToProps = ({ books }) => ({

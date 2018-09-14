@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const autoprefixer = require('autoprefixer');
 
@@ -6,15 +7,15 @@ module.exports = {
   entry: ['babel-polyfill', './src/index.js'],
   output: {
     filename: 'build.js',
-    path: path.resolve(__dirname, '/public'),
+    path: path.resolve(__dirname, '/public')
   },
   mode: 'development',
   // devtool: 'source-map',
   devServer: {
-    publicPath: '/public/',
-    openPage: 'public',
+    publicPath: 'http://localhost:8080/',
     historyApiFallback: true,
-    port: 8080
+    port: 8080,
+    contentBase: path.join(__dirname, 'public')
   },
   resolve: {
     alias: {
@@ -57,7 +58,12 @@ module.exports = {
               localIdentName: "[name]__[local]___[hash:base64:5]"
             }
           },
-          'sass-loader',
+          {
+            loader: "sass-loader",
+            options: {
+              includePaths: ["src/constants"]
+            }
+          },
           {
             loader: 'postcss-loader',
             options: {
@@ -103,6 +109,9 @@ module.exports = {
     }
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.html'
+    }),
     new MiniCssExtractPlugin({
       filename: "[name].css",
     })

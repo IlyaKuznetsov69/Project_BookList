@@ -1,0 +1,15 @@
+.bookCount {
+	text-align: left;
+	width: 115px;
+
+	strong {
+		font-weight: 300;
+	}
+}
+
+@media (max-width: 914px) {
+
+	.bookCount {
+		width: 95px;
+	}
+}

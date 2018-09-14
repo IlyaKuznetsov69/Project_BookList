@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import CSSModules from 'react-css-modules';
 import { Link } from 'react-router-dom';
 
 import BookField from 'components/BookField/BookField';
-import styles from './Book.css';
+import styles from './Book.scss';
 
 const Book = ({
   id,
@@ -18,10 +19,10 @@ const Book = ({
   changeBookView }) => {
 
   return (
-    <ul className={styles.book}>
-      <div className={styles.back}>
+    <ul styleName='book'>
+      <div styleName='back'>
         <input
-          className={styles.toggle}
+          styleName='toggle'
           type="checkbox"
           onChange={() => toggleRead(id)}
           checked={completed}
@@ -59,22 +60,25 @@ const Book = ({
         editBook={editBook}
         changeBookView={changeBookView}
       />
-      <Link to={`/public/${id}`}>
-        <div
-          className={styles.link}
-          title="Посмотреть описание книги"
+      <div styleName='wrap'>
+        <Link to={`/${id}`}>
+          <div
+            styleName='link'
+            title="Посмотреть описание книги"
+          />
+        </Link>
+        <button
+          type="button"
+          styleName='destroy'
+          title="Удалить книгу"
+          onClick={() => deleteBook(id)}
         />
-      </Link>
-      <button
-        type="button"
-        className={styles.destroy}
-        onClick={() => deleteBook(id)}
-      />
+      </div>
     </ul>
   )
 }
 
-export default Book;
+export default CSSModules(Book, styles);
 
 Book.propTypes = {
   id: PropTypes.string.isRequired,

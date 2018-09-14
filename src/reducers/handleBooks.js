@@ -40,7 +40,7 @@ const handleBooks = (state = [], { type, payload }) => {
     }
     case TOGGLE_ALL:
       return state.map(book => {
-        if (payload.switchState === true) {
+        if (payload.switchState) {
           return { ...book, completed: true }
         } return { ...book, completed: false }
       });

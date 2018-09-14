@@ -16,12 +16,8 @@ const FilterContainer = ({ selected, setIt, text }) => {
   )
 }
 
-const getFilterState = (stateFilter, propsFilter) => {
-  return (stateFilter === propsFilter) ? true : false
-}
-
 const mapStateToProps = (state, ownProps) => ({
-  selected: getFilterState(state.selectedFilter, ownProps.ownFilter)
+  selected: state.selectedFilter === ownProps.ownFilter
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

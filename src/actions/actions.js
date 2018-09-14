@@ -6,7 +6,9 @@ import {
   sendAllBooksRequest,
   deleteAllReadRequest,
   sendFilterRequest,
-  sendSearchValueRequest
+  sendSearchValueRequest,
+  fetchBooksRequest,
+  fetchFiltersRequest
 } from 'api/api';
 
 const {
@@ -23,7 +25,7 @@ const sendBookData = (id, getState) => {
   sendBookDataRequest(id, book);
 };
 
-export const refreshBookList = (books) => ({
+const refreshBookList = (books) => ({
   type: REFRESH_BOOKLIST,
   payload: {
     books
@@ -118,7 +120,7 @@ export const toggleAllItems = (switchState) => (dispatch, getState) => {
 };
 
 export const deleteAllRead = () => async (dispatch, getState) => {
-  const books = getState().books.filter((book) => book.completed === true);
+  const books = getState().books.filter(book => book.completed);
   const newBooks = await deleteAllReadRequest(books);
   return dispatch(refreshBookList(newBooks));
 };
@@ -127,8 +129,26 @@ export const sendSearchValue = (newValue) => (dispatch) => {
   dispatch({
     type: SEND_SEARCH_VALUE,
     payload: {
-    newValue
+      newValue
     }
   });
   sendSearchValueRequest(newValue);
+};
+
+export const preloadData = () => async (dispatch) => {
+  const books = await fetchBooksRequest();
+  const filters = await fetchFiltersRequest();
+  dispatch(refreshBookList(books));
+  dispatch({
+    type: SET_FILTER,
+    payload: {
+      filter: filters.selectedFilter
+    }
+  });
+  dispatch({
+    type: SEND_SEARCH_VALUE,
+    payload: {
+      newValue: filters.searchValue
+    }
+  });
 };

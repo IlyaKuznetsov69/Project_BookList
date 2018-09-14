@@ -1,8 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import CSSModules from 'react-css-modules';
 
-import styles from './Filter.css';
+import styles from './Filter.scss';
 
 const Filter = ({ text, selected, setIt }) => {
 
@@ -13,7 +14,7 @@ const Filter = ({ text, selected, setIt }) => {
   }
 
   return (
-    <li className={styles.container}>
+    <li styleName='container'>
       <button
         type="button"
         className={classNames(styles.filter, selectedFilter(selected))}
@@ -25,7 +26,7 @@ const Filter = ({ text, selected, setIt }) => {
   )
 }
 
-export default Filter;
+export default CSSModules(Filter, styles);
 
 Filter.propTypes = {
   text: PropTypes.string.isRequired,

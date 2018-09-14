@@ -1,0 +1,79 @@
+@import 'colors';
+
+html {
+	margin: 0;
+	padding: 0;
+
+	body {
+		font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		line-height: 1.4em;
+		background: $bodyBackgroundColor;
+		color: $bodyTextColor;
+		margin: 0 auto;
+		font-weight: 300;
+	}
+}
+
+button {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	font-size: 100%;
+	vertical-align: baseline;
+	font-family: inherit;
+	font-weight: inherit;
+	color: inherit;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+button,
+input[type="checkbox"] {
+	outline: none;
+}
+
+.bookapp {
+	background: $appBackgroundColor;
+	margin: 100px 0 40px 0;
+	position: relative;
+	box-shadow: 0 2px 4px 0 $appShadowColor1,
+							0 25px 50px 0 $appShadowColor2;
+
+	h1 {
+		position: absolute;
+		top: -125px;
+		width: 100%;
+		font-size: 70px;
+		font-weight: 300;
+		font-style: italic;
+		text-align: center;
+		text-shadow: 3px 3px 3px $bodyTextColor;
+		color: $headerTextColor;
+	}
+
+	@media (max-width: 400px) {
+
+	  h1 {
+		  font-size: 18vw;
+		}
+	}
+
+	input::-webkit-input-placeholder {
+		font-style: italic;
+		font-weight: 300;
+		color: $placeholderTextColor;
+	}
+
+	input::-moz-placeholder {
+		font-style: italic;
+		font-weight: 300;
+		color: $placeholderTextColor;
+	}
+
+	input::input-placeholder {
+		font-style: italic;
+		font-weight: 300;
+		color: $placeholderTextColor;
+	}
+}

@@ -1,14 +1,15 @@
 import React from 'react';
+import CSSModules from 'react-css-modules';
 
 import AddBookContainer from 'containers/AddBookContainer';
 import MainSectionContainer from 'containers/MainSectionContainer';
-import styles from './App.css';
+import styles from './App.scss';
 
 const App = () => {
 
   return (
-    <section className={styles.bookapp}>
-      <header className={styles.header}>
+    <section styleName='bookapp'>
+      <header>
         <h1>список книг</h1>
         <AddBookContainer />
       </header>
@@ -17,4 +18,4 @@ const App = () => {
   )
 }
 
-export default App;
+export default CSSModules(App, styles);

@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import CSSModules from 'react-css-modules';
 
 import Book from 'components/Book/Book';
-import styles from './List.css';
+import styles from './List.scss';
 
 const List = ({
   books,
@@ -12,7 +13,7 @@ const List = ({
   editBook }) => {
 
   return (
-    <ul className={styles.bookList}>
+    <ul styleName='bookList'>
       {books.map((book) => {
         return (
           <Book
@@ -30,7 +31,7 @@ const List = ({
   )
 }
 
-export default List;
+export default CSSModules(List, styles);
 
 List.propTypes = {
   books: PropTypes.arrayOf(PropTypes.shape({

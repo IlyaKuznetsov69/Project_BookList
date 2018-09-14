@@ -1,0 +1,114 @@
+@import 'colors';
+
+.book {
+	display: flex;
+	position: relative;
+	width: 100%;
+	padding: 0;
+	overflow: hidden;
+	
+	.back {
+		display: block;
+		position: relative;
+		width: 50px;
+		height: auto;
+		background-color: $bookBackgroundColor;
+		margin: 0;
+		padding: 0;
+		border-bottom: 1px solid $backBorderColor;
+
+		.toggle {
+			text-align: center;
+			width: 50px;
+			height: auto;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			margin: auto 0;
+			border: none;
+			-webkit-appearance: none;
+			appearance: none;
+			cursor: pointer;
+		}
+		
+		.toggle:after {
+			content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#ededed" stroke-width="3"/></svg>');
+		}
+		
+		.toggle:checked:after {
+			content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
+		}
+
+		@media screen and (-webkit-min-device-pixel-ratio:0) {
+			.toggle {
+				background: none;
+				height: 40px;
+			}
+		}
+	}
+
+	.wrap {
+		display: block;
+		position: relative;
+		height: auto;
+		width: 12%;
+		background-color: $bookBackgroundColor;
+		border-bottom: 1px solid $backBorderColor;
+
+		.link {
+			display: none;
+			position: absolute;
+			top: 0;
+			right: 50px;
+			bottom: 0;
+			width: 22px;
+			height: 22px;
+			margin: auto 0;
+			transform: scale(1);
+			transition: all 0.2s ease-out;
+			background-image: url(components/Book/zoom.png);
+			background-size: cover;
+		}
+
+		.link:hover {
+			transform: scale(1.35);
+		}
+
+		.destroy {
+			display: none;
+			position: absolute;
+			top: 0;
+			right: 10px;
+			bottom: 0;
+			width: 40px;
+			height: 40px;
+			margin: auto 0;
+			font-size: 37px;
+			color: $destroyTextColor;
+			transform: scale(1);
+			transition: all 0.2s ease-out;
+			cursor: pointer;
+		}
+		
+		.destroy:hover {
+			color: $destroyHoverTextColor;
+			transform: scale(1.35);
+		}
+		
+		.destroy:after {
+			content: '×';
+		}
+	}
+}
+
+.book:last-child {
+	border-bottom: none;
+}
+
+.book:hover .destroy {
+	display: block;
+}
+
+.book:hover .link {
+	display: block;
+}

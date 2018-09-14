@@ -1,21 +1,22 @@
 import React from 'react';
+import CSSModules from 'react-css-modules';
 
 import filters from 'constants/filters';
 import CounterContainer from 'containers/CounterContainer';
 import ClearButtonContainer from 'containers/ClearButtonContainer';
 import FilterContainer from 'containers/FilterContainer';
 import SearchContainer from 'containers/SearchContainer';
-import styles from './Footer.css';
+import styles from './Footer.scss';
 
 const Footer = () => {
 
   const { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED } = filters
 
   return (
-    <footer className={styles.footer}>
-      <div className={styles.wrapper}>
+    <footer styleName='footer'>
+      <div styleName='wrapper'>
         <CounterContainer />
-        <ul className={styles.filters}>
+        <ul styleName='filters'>
           <FilterContainer
             ownFilter={SHOW_ALL}
             text="Всего"
@@ -36,4 +37,4 @@ const Footer = () => {
   )
 }
 
-export default Footer;
+export default CSSModules(Footer, styles);

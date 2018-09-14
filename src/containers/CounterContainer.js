@@ -14,7 +14,7 @@ const CounterContainer = ({ booksLeft }) => {
 }
 
 const countItemsLeft = (items) => {
-  return (items.filter((item) => item.completed === false)).length
+  return (items.filter(item => !item.completed)).length
 }
 
 const mapStateToProps = ({ books }) => ({

@@ -3,25 +3,17 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import MainSection from 'components/MainSection/MainSection';
-import { refreshBookList, setFilter, sendSearchValue } from 'actions/actions';
-import { fetchBooksRequest, fetchFiltersRequest } from 'api/api';
+import { preloadData } from 'actions/actions';
 
 class MainSectionContainer extends Component {
 
   componentDidMount() {
-    const { dispatch } = this.props;    
-    const preLoad = async (dispatch) => {
-      const books = await fetchBooksRequest();
-      const filters = await fetchFiltersRequest();
-      dispatch(refreshBookList(books));
-      dispatch(setFilter(filters.selectedFilter));
-      dispatch(sendSearchValue(filters.searchValue));
-    };
-    return preLoad(dispatch);
+    const { preloadData } = this.props;
+    preloadData();
   }
 
   render() {
-    const { itemsQuantity } = this.props; 
+    const { itemsQuantity } = this.props;
     return (
       <MainSection
         itemsQuantity={itemsQuantity}
@@ -34,9 +26,13 @@ const mapStateToProps = ({ books }) => ({
   itemsQuantity: books.length
 });
 
-export default connect(mapStateToProps)(MainSectionContainer);
+const mapDispatchToProps = (dispatch) => ({
+  preloadData: () => dispatch(preloadData())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainSectionContainer);
 
 MainSectionContainer.propTypes = {
   itemsQuantity: PropTypes.number.isRequired,
-  dispatch: PropTypes.func.isRequired
+  preloadData: PropTypes.func.isRequired
 }

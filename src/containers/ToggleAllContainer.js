@@ -18,7 +18,7 @@ const ToggleAllContainer = ({ togglerChecked, toggle }) => {
 const getTogglerState = (items) => {
   const totalQuantity = items.length;
   const completedQuantity = (items.filter(item => item.completed)).length;
-  if (totalQuantity === 0) {
+  if (!totalQuantity) {
     return false
   } return totalQuantity === completedQuantity
 };
